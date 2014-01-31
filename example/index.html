@@ -16,43 +16,6 @@
         console.log('ajax requests complete.');
       });
 
-      $rootScope.$watch(function () {
-        return document.body.innerHTML;
-      }, function (oldVal, newVal) {
-        console.log('dom changed.');
-      });
-
-      /*$rootScope.$watch(function () {
-        return document.readyState;
-      }, function (o, n) {
-        console.log('READYSTATE CHANGED:' + document.readyState + ' ' + o + ' ' + n);
-      });*/
-
-      $rootScope.$watch(function () {
-        return window.performance.timing.loadEventEnd;
-      }, function (o, n) {
-        console.log('window.performance.loadEventEnd CHANGED:');
-      }, true);
-
-      chrome.runtime.connect().Port.onMessage(function(x){
-        console.log('test');
-      });
-/*
-      chrome.runtime.onConnect.addListener(function(devToolsConnection) {
-        // assign the listener function to a variable so we can remove it later
-        var devToolsListener = function(message, sender, sendResponse) {
-          // Inject a content script into the identified tab
-          chrome.tabs.executeScript(message.tabId,
-              { file: message.scriptToInject });
-        }
-        // add the listener
-        devToolsConnection.onMessage.addListener(devToolsListener);
-
-        devToolsConnection.onDisconnect(function() {
-          devToolsConnection.onMessage.removeListener(devToolsListener);
-        });
-      });
-*/
     });
 
   </script>
